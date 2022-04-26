@@ -12,7 +12,7 @@ namespace Examen_Parcial_3.Controllers;
 
 public class LoginController : Controller
 {
-    private readonly MySqlConfiguration _configuration;
+    private readonly MySQLConfiguration _configuration;
     private IUsuarioRepositorio _usuarioRepositorio;
 
     public LoginController(MySQLConfiguration configuration)
@@ -22,6 +22,7 @@ public class LoginController : Controller
     }
 
     [HttpPost("/account/login")]
+
     public async Task<IActionResult> Login(Login login)
     {
         string rol = string.Empty;
@@ -72,9 +73,11 @@ public class LoginController : Controller
     }
 
     [HttpGet("/account/logout")]
+
     public async Task<IActionResult> Logout()
     {
         await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
         return LocalRedirect("/");
     }
+
 }
